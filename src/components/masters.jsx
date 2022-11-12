@@ -10,8 +10,8 @@ const Masters = () => {
     // const [isSortClas, setIsSortClas] = useState("asc");
     const sort = [
         { id: 1, name: "Name", sort: "down", hide: "" },
-        { id: 2, name: "Rate", sort: "down", hide: "hide" },
-        { id: 3, name: "Class", sort: "down", hide: "hide" }
+        { id: 2, name: "Rate", sort: "up", hide: "hide" },
+        { id: 3, name: "Class", sort: "up", hide: "hide" }
     ];
     const [isSort, setIsSort] = useState(sort);
 
