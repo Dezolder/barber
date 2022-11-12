@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import api from "../api";
-// import mastersapi from "../api/fake.api/masters";
+import MasterHead from "./masterHead";
 
 const Masters = () => {
     const [masters, setMaster] = useState(api.masters);
 
-    // const [isSortName, setIsSortName] = useState("asc");
-    // const [isSortRate, setIsSortRate] = useState("asc");
-    // const [isSortClas, setIsSortClas] = useState("asc");
     const sort = [
         { id: 1, name: "Name", sort: "down", hide: "" },
         { id: 2, name: "Rate", sort: "up", hide: "hide" },
@@ -16,7 +13,6 @@ const Masters = () => {
     const [isSort, setIsSort] = useState(sort);
 
     const handleSort = (name) => {
-        // console.log("name:", name);
         setIsSort((prevstate) => {
             return prevstate.map((i) => {
                 if (i.name === name) {
@@ -26,9 +22,6 @@ const Masters = () => {
             }
             );
         }
-            // isSort.map((i) => {
-            //     return console.log("i:", i);
-            // })
         );
     };
     const sortClass = (name, sort, hide) => {
@@ -36,8 +29,6 @@ const Masters = () => {
         if (name === "Rate") return "bi bi-sort-" + sort + hide;
         if (name === "Class") return "bi bi-sort-numeric-" + sort + hide;
     };
-    // const handleSortRate = () => { setIsSort((prevstate) => prevstate.rate.sort === "asc" ? "desc" : "asc"); };
-    // const handleSortClas = () => { setIsSort((prevstate) => prevstate.clas.sort === "asc" ? "desc" : "asc"); };
 
     const handleDelete = (id) => {
         console.log("id:", id);
@@ -52,35 +43,8 @@ const Masters = () => {
 
     return (
         <>
-            <div className="container-md text-center m-5">
-                <div className="row">
-                    <div className="col">
-                        {
-                            isSort.map((i) => (
-                                <div
-                                    key={i.id}
-                                    onClick={() => handleSort(i.name)}
-                                >
-                                    Sort by {i.name}
-                                    <i className={sortClass(i.name, i.sort, i.hide)}></i>
-                                </div>
-                            )
-                            )
-                        }
-                        {/* <div onClick={handleSortName}>Sort by Name <i className={"bi bi-sort-alpha-" + (isSort.name.sort === "asc" ? "down" : "up")}></i></div>
-                        <div onClick={handleSortRate}>Sort by Rate <i className={"bi bi-sort-" + (isSort.name.sort === "asc" ? "down" : "up")}></i></div>
-                        <div onClick={handleSortClas}>Sort by Class <i className={"bi bi-sort-numeric-" + (isSort.name.sort === "asc" ? "down" : "up")}></i></div> */}
-                    </div>
-                    <div className="col">
-                        <header>Masters</header>
-                        <h3>{masters.length}</h3>
-                    </div>
-                    <div className="col text-end" onClick={iconf}>
-                        <h1><i className="bi bi-person-plus-fill"></i></h1>
-                    </div>
-                </div>
-            </div>
-            <div className="container">
+            <MasterHead isSort={isSort} masters={masters.length} iconf={iconf} handleSort={handleSort} sortClass={sortClass} />
+            <div className="container border border-2 border-info">
                 {masters.map((item) => (
                     <div
                         className="card m-4" key={item._id}>
