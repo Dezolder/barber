@@ -53,11 +53,16 @@ const Masters = () => {
                 handleSort={handleSort}
                 sortClass={sortClass}
             />
-            <MasterBody
-                masters={masters}
-                handleDelete={handleDelete}
-                handleClick={handleClick}
-            />
+            {masters.length !== 0
+                ? <MasterBody
+                    masters={masters}
+                    handleDelete={handleDelete}
+                    handleClick={handleClick}
+                />
+                : <div className="text-center" onClick={iconf}>
+                    <h1><i className="bi bi-person-plus-fill"></i></h1>
+                </div>
+            }
         </>
     );
 };
