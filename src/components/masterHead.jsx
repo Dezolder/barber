@@ -1,7 +1,8 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import Pagination from "./pagination";
 
-const MasterHead = ({ isSort, masters, iconf, handleSort, sortClass }) => {
+const MasterHead = ({ isSort, mastersCount, iconf, handleSort, sortClass, ...rest }) => {
     return (
         <div className="container text-center border border-2 border-primary rounded-pill m-5">
             <div className="row align-items-center">
@@ -21,7 +22,8 @@ const MasterHead = ({ isSort, masters, iconf, handleSort, sortClass }) => {
                 </div>
                 <div className="col">
                     <header>Masters</header>
-                    <h3>{masters}</h3>
+                    <h3>{mastersCount}</h3>
+                    <Pagination {...rest} />
                 </div>
                 <div className="col text-end" onClick={iconf}>
                     <h1><i className="bi bi-person-plus-fill"></i></h1>
@@ -33,7 +35,7 @@ const MasterHead = ({ isSort, masters, iconf, handleSort, sortClass }) => {
 
 MasterHead.propTypes = {
     isSort: PropTypes.array,
-    masters: PropTypes.number,
+    mastersCount: PropTypes.number,
     iconf: PropTypes.func,
     handleSort: PropTypes.func,
     sortClass: PropTypes.func

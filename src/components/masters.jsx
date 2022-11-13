@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import api from "../api";
 import MasterHead from "./masterHead";
 import MasterBody from "./masterBody";
+import { paginate } from "../utils/paginate";
 
 const Masters = () => {
     const [masters, setMaster] = useState(api.masters);
@@ -43,19 +44,28 @@ const Masters = () => {
     const iconf = () => {
         console.log("df:");
     };
-
+    const pageSize = 2;
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (id) => {
+        setCurrentPage(id);
+    };
+    const cropMasters = paginate(masters, currentPage, pageSize);
     return (
         <>
             <MasterHead
                 isSort={isSort}
-                masters={masters.length}
+                mastersCount={masters.length}
                 iconf={iconf}
                 handleSort={handleSort}
                 sortClass={sortClass}
+                itemsCount={masters.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
             />
             {masters.length !== 0
                 ? <MasterBody
-                    masters={masters}
+                    masters={cropMasters}
                     handleDelete={handleDelete}
                     handleClick={handleClick}
                 />
