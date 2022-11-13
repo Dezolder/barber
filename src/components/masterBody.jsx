@@ -61,7 +61,11 @@ const MasterBody = ({ masters, handleDelete, handleClick }) => {
                                     key={i}
                                     className="badge bg-primary m-1"
                                     onClick={() =>
-                                        handleClick(i, item._id, "AfterTomarrow")
+                                        handleClick(
+                                            i,
+                                            item._id,
+                                            "AfterTomarrow"
+                                        )
                                     }
                                 >
                                     {i}

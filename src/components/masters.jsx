@@ -63,16 +63,19 @@ const Masters = () => {
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
             />
-            {masters.length !== 0
-                ? <MasterBody
+            {masters.length !== 0 ? (
+                <MasterBody
                     masters={cropMasters}
                     handleDelete={handleDelete}
                     handleClick={handleClick}
                 />
-                : <div className="text-center" onClick={iconf}>
-                    <h1><i className="bi bi-person-plus-fill"></i></h1>
+            ) : (
+                <div className="text-center" onClick={iconf}>
+                    <h1>
+                        <i className="bi bi-person-plus-fill"></i>
+                    </h1>
                 </div>
-            }
+            )}
         </>
     );
 };

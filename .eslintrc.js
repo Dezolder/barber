@@ -4,10 +4,8 @@ module.exports = {
         es2021: true
     },
     extends: ["plugin:react/recommended", "standard"],
+    overrides: [],
     parserOptions: {
-        ecmaFeatures: {
-            jsx: true
-        },
         ecmaVersion: "latest",
         sourceType: "module"
     },
@@ -18,6 +16,7 @@ module.exports = {
 
         // Ошибка при наличии пробела при обозночении функции, уберём её
         "space-before-function-paren": ["error", "never"],
+        "multiline-ternary": ["off"],
 
         // Использование двойных кавычек
         quotes: ["error", "double", { allowTemplateLiterals: true }]
