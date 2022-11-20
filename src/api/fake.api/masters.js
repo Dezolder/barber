@@ -151,4 +151,15 @@ const masters = [
     }
 ];
 
-export default masters;
+// export default masters;
+
+export const fetchAll = () =>
+    new Promise((resolve) => setTimeout(() => resolve(masters), 2000));
+
+export const fetchClasses = () =>
+    new Promise((resolve) => {
+        const uniqueClasses = masters;
+        setTimeout(() => {
+            resolve(uniqueClasses);
+        }, 2000);
+    });

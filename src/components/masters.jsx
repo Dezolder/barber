@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../api";
 import MasterHead from "./masterHead";
 import MasterBody from "./masterBody";
 import { paginate } from "../utils/paginate";
 
 const Masters = () => {
-    const [masters, setMaster] = useState(api.masters);
-
+    const [masters, setMaster] = useState([]);
+    useEffect(() => {
+        api.masters.fetchAll().then((date) => setMaster(date));
+    }, [masters]);
+    // console.log("masters:", masters);
     const sort = [
         { id: 1, name: "Name", sort: "down", hide: "" },
         { id: 2, name: "Rate", sort: "up", hide: "hide" },
