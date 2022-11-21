@@ -1,15 +1,38 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 
-const GroupList = () => {
+const GroupList = ({ classes, onClassSelect, selectedClass, handleResetFilter }) => {
     return (
         <ul className="list-group">
-            <li className="list-group-item">Class 1</li>
-            <li className="list-group-item">Class 2</li>
-            <li className="list-group-item">Class 3</li>
-            <li className="list-group-item">Class 4</li>
-            <li className="list-group-item">Class 5</li>
+            {classes.map((classe) => (
+                <li
+                    key={classe}
+                    className={"list-group-item list-group-item-action d-flex justify-content-between align-items-start" + (selectedClass === classe ? "active" : "")}
+                    onClick={() => onClassSelect(classe)}
+                    role="button"
+                >
+                    <div className="ms-2 me-auto">
+                        {"Class: " + classe}
+                    </div>
+                    {/* <span className="badge bg-primary rounded-pill">14</span> */}
+                </li>
+            ))}
+            <li
+                className="list-group-item list-group-item-action"
+                onClick={handleResetFilter}
+                role="button"
+            >
+                Reset Filter
+            </li>
         </ul>
     );
+};
+
+GroupList.propTypes = {
+    classes: PropTypes.array.isRequired,
+    onClassSelect: PropTypes.func.isRequired,
+    selectedClass: PropTypes.string,
+    handleResetFilter: PropTypes.func
 };
 
 export default GroupList;

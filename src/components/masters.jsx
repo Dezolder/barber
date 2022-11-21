@@ -8,8 +8,23 @@ const Masters = () => {
     const [masters, setMaster] = useState([]);
     useEffect(() => {
         api.masters.fetchAll().then((date) => setMaster(date));
-    }, [masters]);
-    // console.log("masters:", masters);
+    }, []);
+
+    const [classes, setClasses] = useState([]);
+    useEffect(() => {
+        api.masters.fetchClasses().then((date) => setClasses(date));
+    }, []);
+
+    const [selectedClass, setSelectedClass] = useState();
+    const onClassSelect = (item) => {
+        setSelectedClass(item);
+        setCurrentPage(1);
+    };
+    const handleResetFilter = () => {
+        setSelectedClass();
+        setCurrentPage(1);
+    };
+
     const sort = [
         { id: 1, name: "Name", sort: "down", hide: "" },
         { id: 2, name: "Rate", sort: "up", hide: "hide" },
@@ -38,7 +53,7 @@ const Masters = () => {
     };
 
     const handleDelete = (id) => {
-        console.log("id:", id);
+        // console.log("id:", id);
         setMaster(masters.filter((master) => master._id !== id));
     };
     const handleClick = (time, id, day) => {
@@ -52,7 +67,10 @@ const Masters = () => {
     const handlePageChange = (id) => {
         setCurrentPage(id);
     };
-    const cropMasters = paginate(masters, currentPage, pageSize);
+    const filteredMasters = selectedClass ? masters.filter((master) => master.class === selectedClass) : masters;
+    // console.log("filteredMasters:", filteredMasters);
+    const cropMasters = paginate(filteredMasters, currentPage, pageSize);
+    // console.log("cropMasters:", cropMasters);
     return (
         <>
             <MasterHead
@@ -61,10 +79,14 @@ const Masters = () => {
                 iconf={iconf}
                 handleSort={handleSort}
                 sortClass={sortClass}
-                itemsCount={masters.length}
+                itemsCount={filteredMasters.length}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
+                classes={classes}
+                onClassSelect={onClassSelect}
+                selectedClass={selectedClass}
+                handleResetFilter={handleResetFilter}
             />
             {masters.length !== 0 ? (
                 <MasterBody
