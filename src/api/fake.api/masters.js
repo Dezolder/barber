@@ -188,13 +188,12 @@ export const fetchAll = () =>
 
 export const fetchClasses = () =>
     new Promise((resolve) => {
-        const allClasses = masters.map((date) => {
-            // console.log("data.class:", date.class);
+        const allClasses = masters.map((date, index) => {
             return date.class;
         });
-        const uniqueClasses = [...new Set(allClasses)];
-        // console.log("uniqueClasses:", uniqueClasses);
+        // console.log("allClasses:", allClasses);
+        // const uniqueClasses = [...new Set(allClasses)];
         setTimeout(() => {
-            resolve(uniqueClasses);
+            resolve(allClasses);
         }, 2000);
     });
