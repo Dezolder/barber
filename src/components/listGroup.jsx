@@ -1,10 +1,10 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-
+import _ from "lodash";
 const GroupList = ({ classes, onClassSelect, selectedClass, handleResetFilter }) => {
     return (
         <ul className="list-group">
-            {[...new Set(classes)].map((classe) => (
+            {_.orderBy([...new Set(classes)], [], ["asc"]).map((classe) => (
                 <li
                     key={classe}
                     className={"list-group-item list-group-item-action d-flex justify-content-between align-items-start" +
@@ -22,7 +22,7 @@ const GroupList = ({ classes, onClassSelect, selectedClass, handleResetFilter })
                 </li>
             ))}
             <li
-                className="list-group-item list-group-item-action"
+                className="list-group-item list-group-item-action bg-light"
                 onClick={handleResetFilter}
                 role="button"
             >

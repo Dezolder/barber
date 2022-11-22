@@ -1,9 +1,9 @@
 const masters = [
     {
         _id: 1,
-        name: "Виктор",
+        name: "Павел",
         rate: 1,
-        class: "1",
+        class: "2",
         availabilityForToday: [
             "8:30",
             "9:00",
@@ -33,7 +33,7 @@ const masters = [
         _id: 2,
         name: "Женя",
         rate: 2,
-        class: "2",
+        class: "1",
         availabilityForToday: [
             "8:30",
             "9:00",
@@ -150,7 +150,7 @@ const masters = [
         ]
     },
     {
-        _id: 5,
+        _id: 6,
         name: "Платон",
         rate: 5,
         class: "4",

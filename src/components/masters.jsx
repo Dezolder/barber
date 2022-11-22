@@ -3,12 +3,13 @@ import api from "../api";
 import MasterHead from "./masterHead";
 import MasterBody from "./masterBody";
 import { paginate } from "../utils/paginate";
+import _ from "lodash";
 
 const Masters = () => {
     const [masters, setMaster] = useState([]);
     useEffect(() => {
         api.masters.fetchAll().then((date) => setMaster(date));
-    }, []);
+    }, [masters]);
 
     const [classes, setClasses] = useState([]);
     useEffect(() => {
@@ -30,9 +31,14 @@ const Masters = () => {
         { id: 2, name: "Rate", sort: "up", hide: "hide" },
         { id: 3, name: "Class", sort: "up", hide: "hide" }
     ];
+    const sorting = { name1: "name", name2: "class", name3: "rate", sort1: "asc", sort2: "asc", sort3: "asc" };
     const [isSort, setIsSort] = useState(sort);
+    const [asSort, setAsSort] = useState(sorting);
 
     const handleSort = (name) => {
+        if (name === "Name") setAsSort({ name1: "name", name2: "class", name3: "rate", sort1: asSort.sort1 === "asc" ? "desc" : "asc", sort2: asSort.sort2 === "asc" ? "desc" : "asc", sort3: asSort.sort3 === "asc" ? "desc" : "asc" });
+        if (name === "Rate") setAsSort({ name1: "rate", name2: "class", name3: "rate", sort1: asSort.sort1 === "asc" ? "desc" : "asc", sort2: asSort.sort2 === "asc" ? "desc" : "asc", sort3: asSort.sort3 === "asc" ? "desc" : "asc" });
+        if (name === "Class") setAsSort({ name1: "class", name2: "rate", name3: "name", sort1: asSort.sort1 === "asc" ? "desc" : "asc", sort2: asSort.sort2 === "asc" ? "desc" : "asc", sort3: asSort.sort3 === "asc" ? "desc" : "asc" });
         setIsSort((prevstate) => {
             return prevstate.map((i) => {
                 if (i.name === name) {
@@ -62,15 +68,14 @@ const Masters = () => {
     const iconf = () => {
         console.log("df:");
     };
-    const pageSize = 2;
+    const pageSize = 3;
     const [currentPage, setCurrentPage] = useState(1);
     const handlePageChange = (id) => {
         setCurrentPage(id);
     };
     const filteredMasters = selectedClass ? masters.filter((master) => master.class === selectedClass) : masters;
-    // console.log("filteredMasters:", filteredMasters);
-    const cropMasters = paginate(filteredMasters, currentPage, pageSize);
-    // console.log("cropMasters:", cropMasters);
+    const sortedMasters = _.orderBy(filteredMasters, [asSort.name1, asSort.name2, asSort.name3], [asSort.sort1, asSort.sort1, asSort.sort2, asSort.sort3]);
+    const cropMasters = paginate(sortedMasters, currentPage, pageSize);
     return (
         <>
             <MasterHead
