@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../api";
-import MasterHead from "./masterHead";
-import MasterBody from "./masterBody";
+import MasterHead from "../components/masterHead";
+import MasterBody from "../components/masterBody";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
 

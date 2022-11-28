@@ -2,6 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import Pagination from "./pagination";
 import GroupList from "./listGroup";
+import { Link } from "react-router-dom";
 
 const MasterHead = ({
     isSort,
@@ -17,7 +18,7 @@ const MasterHead = ({
 }) => {
     return (
         <div className="d-flex flex-row justify-content-evenly align-items-center border border-2 border-primary rounded-pill m-5">
-            <div className="ms-5 flex-fill">Back</div>
+            <div className="ms-5 flex-fill"><Link to="/" >Back</Link></div>
             <div className="ms-5 text-start flex-fill">
                 {isSort.map((i) => (
                     <div
