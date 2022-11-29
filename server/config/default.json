@@ -1,0 +1,4 @@
+{
+    "port": 8080,
+    "mongoUri": "mongodb+srv://barber:lC7PQEBVNcWn2bEG@cluster0.g33aa8o.mongodb.net/barber?retryWrites=true&w=majority"
+}
