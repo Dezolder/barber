@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "BarberShop Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evgeniy Zhukov <evgeniy.zhukov.2021@gmail.com>",
+  "license": "ISC"
+}
