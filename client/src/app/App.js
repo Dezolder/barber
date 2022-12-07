@@ -10,7 +10,7 @@ import Time from "./layouts/time";
 const App = () => {
     return (
         <Switch>
-            <Route path="/login" component={Login} />
+            <Route path="/login:type?" component={Login} />
             <Route path="/menu" component={Menu} />
             <Route path="/select-master" component={Masters} />
             <Route path="/select-time" component={Time} />
