@@ -4,7 +4,7 @@
     "description": "BarberShop Backend",
     "main": "index.js",
     "scripts": {
-        "start": "cross-env NODE_ENV=porduction node app.js",
+        "start": "cross-env NODE_ENV=production node app.js",
         "serve": "cross-env NODE_ENV=development nodemon app.js"
     },
     "author": "Evgeniy Zhukov <evgeniy.zhukov.2021@gmail.com>",
@@ -13,6 +13,7 @@
         "bcryptjs": "^2.4.3",
         "chalk": "^4.1.2",
         "config": "^3.3.8",
+        "cors": "^2.8.5",
         "express": "^4.18.2",
         "express-validator": "^6.14.2",
         "jsonwebtoken": "^8.5.1",

@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
       return res.status(401).json({message: 'Unauthorized'})
     }
 
-    const data = tokenService.validateAccess(token)
+    const data = tokenService.validateAccess()
 
     req.user = data
 

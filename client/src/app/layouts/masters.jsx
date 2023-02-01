@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
-import api from "../api";
+// import api from "../api";
 import MasterHead from "../components/masterHead";
 import MasterBody from "../components/masterBody";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
+import axios from "axios";
 
 const Masters = () => {
     const [masters, setMaster] = useState([]);
     useEffect(() => {
-        api.masters.fetchAll().then((date) => setMaster(date));
-    }, [masters]);
+        // const { data } =
+        axios.get("http://185.237.15.15/api/select-master")
+            .then((res) => setMaster(res.data));
+        // .then((res) => console.log(res.data))
+        // console.log(data);
+        // setMaster(data);
+        // api.masters.fetchAll().then((date) => setMaster(date));
+    }, []);
 
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        api.masters.fetchClasses().then((date) => setClasses(date));
-    }, []);
+        // api.masters.fetchClasses().then((date) => setClasses(date));
+        setClasses(masters.map(master => master.class));
+    }, [masters]);
 
     const [selectedClass, setSelectedClass] = useState();
     const onClassSelect = (item) => {
