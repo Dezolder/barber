@@ -1,7 +1,7 @@
-import React from "react-dom";
+import React from 'react-dom'
 
 const Time = () => {
-    return (<h1>Time</h1>);
-};
+  return <h1>Time</h1>
+}
 
-export default Time;
+export default Time

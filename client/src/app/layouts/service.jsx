@@ -1,7 +1,7 @@
-import React from "react-dom";
+import React from 'react-dom'
 
 const Service = () => {
-    return (<h1> Service </h1>);
-};
+  return <h1> Service </h1>
+}
 
-export default Service;
+export default Service

@@ -37,7 +37,7 @@ async function start() {
                 chalk.green(`Server has been started on port ${PORT} ...`)
             );
         });
-    } catch (err) {
+    } catch (e) {
         console.log(chalk.red(e.message));
         process.env(1);
     }

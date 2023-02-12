@@ -1,0 +1,4 @@
+{
+  "apiEndPoint": "http://localhost:8080/api/",
+  "senrtyDSN": "https://1969f708e9714accab756b034a84df66@o1424284.ingest.sentry.io/4504628878442496"
+}

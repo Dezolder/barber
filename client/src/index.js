@@ -1,14 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter } from "react-router-dom";
-import App from "./app/App";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import 'bootstrap/dist/css/bootstrap.css'
+import { BrowserRouter } from 'react-router-dom'
+import App from './app/App'
+import logger from './app/services/log.service'
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+logger.init()
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <BrowserRouter>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    </BrowserRouter>
-);
+  <BrowserRouter>
+    {/* <React.StrictMode> */}
+    <App />
+    {/* </React.StrictMode> */}
+  </BrowserRouter>
+)
